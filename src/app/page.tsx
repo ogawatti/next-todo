@@ -1,11 +1,13 @@
+"use server";
 import Todo from "@/components/todo";
+import prisma from '@/lib/prisma';
 
-export default function Home() {
-  const tasks = [
-    { id: 1, content: "First todo" },
-    { id: 2, content: "Second todo" },
-    { id: 3, content: "Third todo" },
-  ];
+export const Home = async () => {
+  const tasks = await prisma.task.findMany({
+    where: {
+      done: false
+    },
+  });
 
   return (
     <main className="container mx-auto">
@@ -23,3 +25,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default Home;
