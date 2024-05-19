@@ -1,16 +1,8 @@
+import { findAll } from "@/actions/task";
 import Task from "@/components/task";
-import prisma from '@/lib/prisma';
 
 export const Tasks = async () => {
-  const tasks = await prisma.task.findMany({
-    where: {
-      done: false
-    },
-    orderBy: {
-      id: 'desc'
-    }
-  });
-  console.log(tasks);
+  const tasks = await findAll();
 
   return (
     <div className="flex justify-center">

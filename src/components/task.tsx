@@ -1,6 +1,6 @@
 "use client";
 
-import { done } from "@/actions/done";
+import { done } from "@/actions/task";
 import { useRouter } from "next/navigation";
 
 type TaskPorps = {
