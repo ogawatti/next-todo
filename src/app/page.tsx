@@ -1,3 +1,4 @@
+import AddTaskForm from "@/components/add-task-form";
 import Header from "@/components/header";
 import Tasks from "@/components/tasks";
 
@@ -6,7 +7,8 @@ export const Home = () => {
     <main className="container mx-auto">
       <Header />
 
-      <div className="flex justify-center">
+      <div>
+        <AddTaskForm />
         <Tasks />
       </div>
     </main>
