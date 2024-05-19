@@ -1,11 +1,11 @@
 "use server";
 
+import { currentUser } from '@/lib/current-user';
 import prisma from '@/lib/prisma';
-import { getUserInfo } from '@/lib/user-info';
 
 export const findAll = async () => {
-  const { sub, name, email } = getUserInfo();
-  console.log('----------------', sub, name, email);
+  const user = await currentUser();
+  console.log(user);
 
   return await prisma.task.findMany({
     where: {
