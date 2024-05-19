@@ -3,7 +3,9 @@ import { getUserInfo } from "./user-info";
 export const currentUser = async () => {
   const { sub, name, email } = getUserInfo();
 
-  if (!sub || !name || !email) return null;
+  if (!sub || !name || !email) {
+    throw new Error('Invalid user info');
+  };
 
   const user = await prisma.user.findUnique({
     where: { sub }
@@ -12,7 +14,7 @@ export const currentUser = async () => {
   if (user) {
     if (user.sub !== sub || user.name !== name || user.email !== email) {
       return await prisma.user.update({
-        where: { id: user.id },
+        where: { sub: user.sub },
         data: { sub, name, email }
       })
     } else {
