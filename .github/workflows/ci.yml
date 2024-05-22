@@ -29,4 +29,4 @@ jobs:
       - name: Run backend tests
         run: |
           yarn lint
-          yarn test
+          yarn test:cov
