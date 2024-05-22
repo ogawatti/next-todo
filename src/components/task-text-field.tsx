@@ -7,6 +7,7 @@ export const TaskTextField = ({ id }: TaskTextFieldProps) => {
     <input
       type="text"
       id={id}
+      data-testid="task-text-field"
       name="content"
       placeholder="TODO"
       required

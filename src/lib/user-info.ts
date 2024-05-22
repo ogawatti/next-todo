@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import { headers } from 'next/headers';
 import { TestUser } from './test-user';
 
-type UserInfo = {
+export type UserInfo = {
   sub?: string;
   name?: string;
   email?: string;
@@ -13,10 +13,7 @@ export const getUserInfo = (): UserInfo => {
 
     if (!xAmznOidcData) return process.env.NODE_ENV !== 'production' ? TestUser : {};
 
-    const token = JSON.parse(xAmznOidcData);
-    if (!token) return process.env.NODE_ENV !== 'production' ? TestUser : {};
-
-    const payload = jwt.decode(token);
+    const payload = jwt.decode(xAmznOidcData);
     if (!payload || typeof payload === 'string')
       return process.env.NODE_ENV !== 'production' ? TestUser : {};
 

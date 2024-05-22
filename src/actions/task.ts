@@ -13,7 +13,7 @@ export const findAll = async () => {
     },
     orderBy: {
       id: 'desc'
-    }
+    },
   });
 };
 
@@ -24,13 +24,23 @@ export const create = async (formData: FormData) => {
   if (!content) return;
 
   return await prisma.task.create({
-    data: { content, userId: user.sub }
+    data: {
+      content,
+      userId: user.sub
+    },
   });
 };
 
 export const done = async (id: bigint) => {
+  const user = await currentUser();
+
   return await prisma.task.update({
-    where: { id },
-    data: { done: true },
+    where: {
+      id,
+      userId: user.sub
+    },
+    data: {
+      done: true
+    },
   });
 };

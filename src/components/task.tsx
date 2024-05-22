@@ -1,7 +1,7 @@
 "use client";
 
-import { done } from "@/actions/task";
 import { useRouter } from "next/navigation";
+import { done } from "@/actions/task";
 
 type TaskPorps = {
   id: bigint;
@@ -13,10 +13,11 @@ export const Task = ({ id, content }: TaskPorps) => {
   const taskId = Number(id).toString();
 
   return (
-    <li className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+    <li data-testid="task" className="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
       <div className="flex items-center ps-3">
         <input 
           id={taskId}
+          data-testid="task-checkbox"
           type="checkbox"
           value=""
           onChange={async () => {

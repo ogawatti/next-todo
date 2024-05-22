@@ -10,7 +10,7 @@ export const AddTaskForm = () => {
   const router = useRouter();
 
   return (
-    <div className="flex justify-center my-2">
+    <div data-testid="add-task-form" className="flex justify-center my-2">
       <form
         ref={ref}
         action={

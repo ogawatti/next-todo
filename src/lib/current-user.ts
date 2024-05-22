@@ -1,11 +1,10 @@
 import { getUserInfo } from "./user-info";
+import prisma from "./prisma";
 
 export const currentUser = async () => {
   const { sub, name, email } = getUserInfo();
 
-  if (!sub || !name || !email) {
-    throw new Error('Invalid user info');
-  };
+  if (!sub || !name || !email) throw new Error('Invalid user info');
 
   const user = await prisma.user.findUnique({
     where: { sub }
