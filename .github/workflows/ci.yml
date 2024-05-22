@@ -1,6 +1,11 @@
 ---
-name: unit test (backend)
-on: [push]
+name: ci
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+      - '.github/workflows/ci.yml'
 
 jobs:
   unit-tests:
