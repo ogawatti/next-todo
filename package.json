@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --silent",
+    "test:watch": "jest --silent --watch",
+    "test:cov": "jest --silent --coverage",
     "lint": "next lint",
     "db:migrate": "prisma migrate dev",
     "db:migrate:test": "dotenv -e .env.test -- prisma migrate dev",
